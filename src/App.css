@@ -2,7 +2,14 @@
   text-align: center;
 }
 
+.register-form
+{
+  display:flex;
+}
+
 .data-input
 {
  display:flex;
+ flex-direction: row;
+ border:solid black 2px;
 }
