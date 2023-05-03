@@ -11,10 +11,15 @@ function App()
   return (
     <div className="App">
         <Header />
-        <Login />
-        <Register />
-        <Logout />
+
+        <div className="action-line">
+          <Login />
+          <Register />
+          <Logout />
+        </div>
+
         <List />
+        
         <Footer />
     </div>
   )
