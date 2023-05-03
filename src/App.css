@@ -1,3 +1,15 @@
-.App {
+.App 
+{
   text-align: center;
+}
+
+.register-form
+{
+  display:flex;
+}
+
+.data-input
+{
+ display:flex;
+ flex-direction: row;
 }
