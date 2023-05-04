@@ -15,10 +15,15 @@ function App()
   return (
     <div className="App">
         <Header />
-        <Login setUser={setUser} setMessage={setMessage} user={user} />
-        <Register setMessage={setMessage} />
-        <Logout setUser={setUser} setMessage={setMessage} message={message} />
+
+        <div className="action-line">
+          <Login setUser={setUser} setMessage={setMessage} user={user} />
+          <Register setMessage={setMessage} />
+          <Logout setUser={setUser} setMessage={setMessage} message={message} />
+        </div>
+
         <List />
+        
         <Footer />
     </div>
   )
