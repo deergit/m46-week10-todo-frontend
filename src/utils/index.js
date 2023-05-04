@@ -1,3 +1,26 @@
+export const registerUser = async (username, password) => 
+{
+    try 
+    {
+        const response = await fetch
+        ("http://localhost:5001/users/register", 
+            {method: "POST"
+            ,headers:{"Content-Type" : "application/json"}
+            ,body: JSON.stringify(
+                {"username": username
+                ,"password": password
+                })
+            }
+        )
+        const data = await response.json()
+        console.log(data)
+    } 
+    catch (error) 
+    {
+        console.log('Register User error : ' + error.message)
+    }
+}
+
 export const addTodo = async ( todo, jwtToken ) => {
     try {
         const response = await fetch("http://localhost:5001/activetodos/addtodo", {
@@ -156,7 +179,7 @@ export const LoginPage = async ( username, password, jwtToken ) => {
         }
         const data = await response.json()
         const successMessage = {
-            message: "success",
+            message: "User : " + data.user.username + " logged in",
             token: data.token,
             user: {
               id: data.user.id,
@@ -167,6 +190,6 @@ export const LoginPage = async ( username, password, jwtToken ) => {
         return successMessage;
         
     } catch (error) {
-        
+        console.log('Login User error : ' + error.message)
     }
 }
