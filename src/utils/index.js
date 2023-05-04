@@ -1,5 +1,3 @@
-import {writeCookie} from  "../common"
-
 export const registerUser = async (username, password) => 
 {
     try 
@@ -47,7 +45,6 @@ export const addTodo = async ( todo, jwtToken ) => {
             throw new Error(errorData.message);
         };
         const data = await response.json()
-        newTodo(data.user.todo);
         const successMessage = {
             message: "success",
             todo: {
@@ -90,7 +87,6 @@ export const addDoneTodo = async ( todo, jwtToken ) => {
             throw new Error(errorData.message);
         }
         const data = await response.json()
-        newDoneTodo(data.user.todo);
         const successMessage = {
             message: "success",
             todo: {
@@ -137,7 +133,6 @@ export const deleteActiveTodo = async ( todo, jwtToken ) => {
             throw new Error("User not Authorized");
           }
         const data = await response.json()
-        newTodo(data.user.todo);
         const successMessage = {
             message: "success",
             todo: {
@@ -188,7 +183,6 @@ export const LoginPage = async ( username, password, jwtToken ) => {
               username: data.user.username,
             },
         }
-        res.status(201).json({ successMessage });
         return successMessage;
         
     } catch (error) {
