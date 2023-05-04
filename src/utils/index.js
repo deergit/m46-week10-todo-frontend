@@ -129,3 +129,44 @@ export const deleteActiveTodo = async ( todo, jwtToken ) => {
         throw new Error(errorMessage);
     }
 };
+
+export const LoginPage = async ( username, password, jwtToken ) => {
+    try {
+        const response = await fetch("http://localhost:5001/users/loginUser", {
+            method:"POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${jwtToken}`
+            },
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            })
+        });
+        if (response.status === 501) {
+            const notAuthorized = {
+                message: "User not authorized"
+            };
+            throw new Error(notAuthorized);
+        }
+        else if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        const data = await response.json()
+        const successMessage = {
+            message: "success",
+            token: data.token,
+            user: {
+              id: data.user.id,
+              username: data.user.username,
+            },
+        }
+        res.status(201).json({ successMessage });
+        return successMessage;
+        
+    } catch (error) {
+        
+    }
+}
