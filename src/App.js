@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Footer from './pages/Footer'
 import Header from './pages/Header'
@@ -8,13 +9,21 @@ import Register from './pages/Register'
 
 function App() 
 {
+  const [message, setMessage] = useState()
+  const [user, setUser] = useState()
+
   return (
     <div className="App">
         <Header />
-        <Login />
-        <Register />
-        <Logout />
+
+        <div className="action-line">
+          <Login setUser={setUser} setMessage={setMessage} user={user} />
+          <Register setMessage={setMessage} />
+          <Logout setUser={setUser} setMessage={setMessage} message={message} />
+        </div>
+
         <List />
+        
         <Footer />
     </div>
   )

@@ -1,3 +1,36 @@
-.App {
+.App 
+{
   text-align: center;
+}
+
+.register-form
+{
+  display:flex;
+}
+
+.data-input
+{
+ display:flex;
+ flex-direction: row;
+}
+
+.action-line
+{
+  display:flex;
+  flex-direction: row;
+}
+
+.loginForm
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.header
+{
+  text-shadow:-2px -2px pink;
+  font-family:trebuchet ms;
+  font-size:40px;
+  color:purple;
+
 }
