@@ -1,16 +1,18 @@
 import '../App.css'
 import { useState } from 'react'
 
-function Register() 
+function Register({ setMessage }) 
 {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
 
-    const registerUser = async () =>
+    const registerUser = async (e) =>
     {
-      /*
+      e.preventDefault() 
+      
       try 
       {
+        /*
         const response = await fetch("http://localhost:5001/users/register", 
         {method: "POST"
         ,headers: 
@@ -20,16 +22,17 @@ function Register()
               ,"password":password
               })
         })
-
+        
         const data = await response.json()
         console.log(data)
+        */
+        setMessage(username + ' registered')
       } 
       catch (error) 
       {
         console.log(error)
+        setMessage('Register error - ' + error)
       }
-      */
-      alert('under construction')
     }
   
   return (

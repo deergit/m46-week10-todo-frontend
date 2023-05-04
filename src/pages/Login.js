@@ -10,8 +10,8 @@ function LoginPage() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      
+      <form onSubmit={handleSubmit} className="loginForm">
         <label>
           Username:
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -24,6 +24,7 @@ function LoginPage() {
         <br />
         <button type="submit">Login</button>
       </form>
+
     </div>
   );
 }

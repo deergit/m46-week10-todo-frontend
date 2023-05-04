@@ -19,3 +19,27 @@
   display:flex;
   flex-direction: row;
 }
+
+.loginForm
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.header
+{
+  text-shadow:-2px -2px pink;
+  font-family:trebuchet ms;
+  font-size:40px;
+  color:purple;
+
+}
+
+.footer
+{
+  background-color:black;
+  color:yellow;
+  font-family:century gothic;
+  font-size:15px;
+  padding:5px;
+}
