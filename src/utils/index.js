@@ -1,3 +1,5 @@
+import {writeCookie} from  "../common"
+
 export const registerUser = async (username, password) => 
 {
     try 
