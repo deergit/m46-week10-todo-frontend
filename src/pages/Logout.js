@@ -1,17 +1,19 @@
 import '../App.css'
 
-function Logout() 
+function Logout({ setUser, setMessage, message }) 
 {
+  
   function logoutUser()
   {
-    alert('under construction')
+    setUser()
+    setMessage('user logged out')
   }
 
   return (
     <div className="App">
       <div className="action-line">
-        <div><input type="submit" value="logout" onClick={ () => logoutUser()} /></div>
-        <div>Status message i.e. user name when logged in, blank when  logged out</div>
+        <div><input type="button" value="logout" onClick={ () => logoutUser() } /></div>
+        <div>{message}</div>
       </div>
     </div>
   )
