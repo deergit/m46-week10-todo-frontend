@@ -1,3 +1,27 @@
-.App {
+.App 
+{
   text-align: center;
+}
+
+.register-form
+{
+  display:flex;
+}
+
+.data-input
+{
+ display:flex;
+ flex-direction: row;
+}
+
+.action-line
+{
+  display:flex;
+  flex-direction: row;
+}
+
+.loginForm
+{
+  display: flex;
+  flex-direction: row;
 }

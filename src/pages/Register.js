@@ -1,7 +1,7 @@
 import '../App.css'
 import { useState } from 'react'
 
-function Register() 
+function Register({ setMessage }) 
 {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
@@ -23,13 +23,26 @@ function Register()
 
         const data = await response.json()
         console.log(data)
+        setMessage('Register error - ' + error)
       } 
       catch (error) 
       {
         console.log(error)
+        setMessage('Register error - ' + error)
       }
       */
-      alert('under construction')
+
+      let done = true
+
+      if (done)
+      {
+        setMessage(username + ' registered')
+      }
+      else
+      {
+        setMessage(username + ' not registered')
+      }
+
     }
   
   return (
