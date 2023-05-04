@@ -10,6 +10,7 @@ function LoginPage() {
 
   return (
     <div>
+      
       <form onSubmit={handleSubmit} className="loginForm">
         <label>
           Username:
@@ -23,6 +24,7 @@ function LoginPage() {
         <br />
         <button type="submit">Login</button>
       </form>
+
     </div>
   );
 }
