@@ -1,5 +1,3 @@
-import { writeCookie } from "../common";
-
 export const addTodo = async ( todo, jwtToken ) => {
     try {
         const response = await fetch("http://localhost:5001/activetodos/addtodo", {
@@ -25,12 +23,20 @@ export const addTodo = async ( todo, jwtToken ) => {
         };
         const data = await response.json()
         newTodo(data.user.todo);
-        // look at cookies and see if they're required
-        writeCookie("jwt_token", data.user.token, 7);
-        res.status(201).json({message: "success", todo: data.user.todo});
+        const successMessage = {
+            message: "success",
+            todo: {
+              id: data.user.todo.id,
+              todo: data.user.todo.todo,
+            },
+        };
+        return successMessage;
     } catch (error) {
-        // ADD 501 Error 
-        throw new Error(error.message);
+        const errorMessage = {
+            message: "error",
+            error: error.message,
+        };
+        throw new Error(errorMessage);
     }
 };
 
@@ -60,12 +66,20 @@ export const addDoneTodo = async ( todo, jwtToken ) => {
         }
         const data = await response.json()
         newDoneTodo(data.user.todo);
-        // look at cookies and see if they're required
-        writeCookie("jwt_token", data.user.token, 7);
-        res.status(201).json({message: "success", todo: data.user.todo});
+        const successMessage = {
+            message: "success",
+            todo: {
+              id: data.user.todo.id,
+              todo: data.user.todo.todo,
+            },
+        };
+        return successMessage;
     } catch (error) {
-        // ADD 501 Error 
-        throw new Error(error.message);
+        const errorMessage = {
+            message: "error",
+            error: error.message,
+        };
+        throw new Error(errorMessage);
     }
 };
 
@@ -99,11 +113,19 @@ export const deleteActiveTodo = async ( todo, jwtToken ) => {
           }
         const data = await response.json()
         newTodo(data.user.todo);
-        // look at cookies and see if they're required
-        writeCookie("jwt_token", data.user.token, 7);
-        res.status(201).json({message: "success", todo: data.user.todo});
+        const successMessage = {
+            message: "success",
+            todo: {
+              id: data.user.todo.id,
+              todo: data.user.todo.todo,
+            },
+        };
+        return successMessage;
     } catch (error) {
-        // ADD 501 Error 
-        throw new Error(error.message);
+        const errorMessage = {
+            message: "error",
+            error: error.message,
+        };
+        throw new Error(errorMessage);
     }
 };
