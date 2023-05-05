@@ -5,6 +5,7 @@ export const registerUser = async (username, password) =>
         const response = await fetch
         ("http://localhost:5001/users/register", 
             {method: "POST"
+            ,mode: "cors"
             ,headers:{"Content-Type" : "application/json"}
             ,body: JSON.stringify(
                 {"username": username
