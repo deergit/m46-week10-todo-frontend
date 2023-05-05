@@ -4,7 +4,7 @@ function Footer()
 {
   return (
     <div className="App">
-      <div>footer</div>
+      <div className="footer">world's greatest company</div>
     </div>
   )
 }
