@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
+import { loginUser } from "../utils"
 
-function LoginPage() {
+function Login({ setMessage, setUser, user}) 
+{
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Login - username:  ' + username + ' password: ' + password)
+    const data = await loginUser(username, password)
+    console.log('Login : ' + data.message)
+    setMessage(data.message)
+    setUser(data.user.username)
   }
 
   return (
@@ -29,4 +36,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;

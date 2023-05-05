@@ -1,3 +1,5 @@
+import { writeCookie } from  "../common"
+
 export const registerUser = async (username, password) => 
 {
     try 
@@ -15,10 +17,41 @@ export const registerUser = async (username, password) =>
         )
         const data = await response.json()
         console.log(data)
+        return data
     } 
     catch (error) 
     {
         console.log('Register User error : ' + error.message)
+    }
+}
+
+
+export const loginUser = async ( username, password ) => 
+{
+    console.log('loginUser - username: ' + username + ' passowrd: ' + password)
+    try 
+    {
+        const response = await fetch
+        ("http://localhost:5001/users/login", 
+            {method: "POST"
+            ,mode: "cors"
+            ,headers: {"Content-Type": "application/json"}
+            ,body: JSON.stringify(
+                {"username": username
+                ,"password": password
+                })
+            }
+        )
+        const data = await response.json()
+        data.message = "User: " + data.user.username + " logged in"
+        console.log(data)
+
+        writeCookie("jwt_token", data.user.token, 7)
+
+        return data
+        
+    } catch (error) {
+        console.log('Login User error : ' + error.message)
     }
 }
 
@@ -150,43 +183,3 @@ export const deleteActiveTodo = async ( todo, jwtToken ) => {
         throw new Error(errorMessage);
     }
 };
-
-export const LoginPage = async ( username, password, jwtToken ) => {
-    try {
-        const response = await fetch("http://localhost:5001/users/loginUser", {
-            method:"POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwtToken}`
-            },
-            body: JSON.stringify({
-                "username": username,
-                "password": password
-            })
-        });
-        if (response.status === 501) {
-            const notAuthorized = {
-                message: "User not authorized"
-            };
-            throw new Error(notAuthorized);
-        }
-        else if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message);
-        }
-        const data = await response.json()
-        const successMessage = {
-            message: "User : " + data.user.username + " logged in",
-            token: data.token,
-            user: {
-              id: data.user.id,
-              username: data.user.username,
-            },
-        }
-        return successMessage;
-        
-    } catch (error) {
-        console.log('Login User error : ' + error.message)
-    }
-}
